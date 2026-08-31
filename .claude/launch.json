@@ -4,13 +4,13 @@
     {
       "name": "reader-site",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "reader-site", "run", "dev"],
+      "runtimeArgs": ["--prefix", "reader-product", "run", "dev"],
       "port": 5173
     },
     {
       "name": "admin-app",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "admin-app", "run", "dev"],
+      "runtimeArgs": ["--prefix", "admin-product/admin-app", "run", "dev"],
       "port": 5174
     }
   ]

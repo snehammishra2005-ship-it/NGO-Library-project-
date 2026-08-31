@@ -3,6 +3,10 @@
 
 const TOKEN_KEY = 'admin_token';
 
+// Dev uses the Vite proxy to the backend on :4000. When the admin app is
+// hosted apart from the backend, set VITE_API_BASE to the backend origin.
+const API_BASE = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
+
 export const tokenStore = {
   get: () => localStorage.getItem(TOKEN_KEY),
   set: (t) => localStorage.setItem(TOKEN_KEY, t),
@@ -15,7 +19,7 @@ async function request(path, { method = 'GET', body, raw = false } = {}) {
   const token = tokenStore.get();
   if (token) headers.Authorization = `Bearer ${token}`;
 
-  const res = await fetch(`/api/admin${path}`, {
+  const res = await fetch(`${API_BASE}/api/admin${path}`, {
     method, headers, body: body ? JSON.stringify(body) : undefined,
   });
   if (raw) return res;

@@ -4,6 +4,12 @@
 
 const TOKEN_KEY = 'reader_token';
 
+// In local dev the Vite proxy forwards /api to the backend on :4000.
+// When the reader site is deployed separately from the backend, set
+// VITE_API_BASE (e.g. https://api.yourlibrary.com) so calls reach the
+// backend's public API directly. Falls back to a relative path.
+const API_BASE = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
+
 export const tokenStore = {
   get: () => localStorage.getItem(TOKEN_KEY),
   set: (t) => localStorage.setItem(TOKEN_KEY, t),
@@ -16,7 +22,7 @@ async function request(path, { method = 'GET', body, auth = false } = {}) {
     const token = tokenStore.get();
     if (token) headers.Authorization = `Bearer ${token}`;
   }
-  const res = await fetch(`/api/public${path}`, {
+  const res = await fetch(`${API_BASE}/api/public${path}`, {
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,

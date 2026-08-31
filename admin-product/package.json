@@ -1,0 +1,13 @@
+{
+  "name": "library-admin-product",
+  "version": "1.0.0",
+  "description": "Admin product — the library system of record: Express + Oracle backend and the private staff console. Also serves the public reader site's API.",
+  "private": true,
+  "scripts": {
+    "install:all": "npm --prefix backend install && npm --prefix admin-app install",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:admin": "npm --prefix admin-app run dev",
+    "gen:seed": "npm --prefix backend run gen:seed"
+  },
+  "license": "ISC"
+}
