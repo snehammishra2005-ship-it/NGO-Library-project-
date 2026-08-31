@@ -3,3 +3,6 @@ dist/
 .env
 *.log
 .DS_Store
+
+# Local design exploration — not part of the shipped products
+design-samples/
