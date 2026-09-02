@@ -2,6 +2,12 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "backend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "admin-product/backend", "run", "dev"],
+      "port": 4000
+    },
+    {
       "name": "reader-site",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "reader-product", "run", "dev"],
